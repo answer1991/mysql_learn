@@ -106,9 +106,23 @@ DROP CONSTRAINT fk_testId;
 /* ------------------------ FOREIGN KEY END ----------------------------- */
 
 /* ------------------------ CHECK ----------------------------- */
+###CHECK
 CREATE TABLE test
 (
 	id INT NOT NULL,
 	name VARCHAR(20),
 	CHECK (id > 0)
 );
+
+CREATE TABLE test
+(
+	id INT NOT NULL,
+	name VARCHAR(20),
+	CONSTRAINT chk_testId CHECK (id > 0 AND name LIKE "test_%")
+);
+
+ALTER TABLE test
+ADD CHECK (id > 0);
+
+ALTER TABLE test
+ADD CONSTRAINT chk_testId CHECK (id > 0);
