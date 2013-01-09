@@ -126,3 +126,25 @@ ADD CHECK (id > 0);
 
 ALTER TABLE test
 ADD CONSTRAINT chk_testId CHECK (id > 0);
+
+###DROP CHECK 注意，MySQL中CKECK不能使用DROP CONSTRAINT
+ALTER TABLE test
+DROP CHECK chk_testId;
+
+/* ------------------------ CHECK END ----------------------------- */
+
+/* ------------------------ DEFAULT ----------------------------- */
+### DEFAULT  不知道DATE类型的怎么设置DEFAULT
+CREATE TABLE test
+(
+	id INT NOT NULL,
+	date TIMESTAMP DEFAULT CURDATE()
+);
+
+ALTER TABLE test
+ALERT col_name SET DEFAULT xxx;
+
+###DROP DEFAULT
+ALTER TABLE test
+ALTER col_name DROP xxx;
+/* ------------------------ DEFAULT ----------------------------- */
